@@ -1,6 +1,6 @@
 variable "machine_type" {
-  type = string
-  default = "e2-medium"
+  type = list
+  default = ["e2-medium", "e2-micro"]
 }
 
 variable "zone" {
