@@ -1,11 +1,12 @@
 resource "google_compute_instance" "default" {
-  name         = "test"
-  machine_type = "e2-medium"
-  zone         = "us-central1-a"
+  count        = var.instance_count
+  name         = element(var.vm_names, count.index)
+  machine_type = var.machine_type
+  zone         = var.zone
   
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
+      image = var.image
       labels = {
         my_label = "value"
       }
