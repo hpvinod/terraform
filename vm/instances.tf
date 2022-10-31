@@ -6,7 +6,7 @@ resource "google_compute_instance" "default" {
   
   boot_disk {
     initialize_params {
-      image = var.image
+      image = element(var.image, count.index)
       labels = {
         my_label = "value"
       }

@@ -9,8 +9,8 @@ variable "zone" {
 }
 
 variable "image" {
-  type = string
-  default = "debian-cloud/debian-11"
+  type = list
+  default = ["debian-cloud/debian-11", "debian-cloud/debian-10"]
 }
 
 variable "vm_names" {
