@@ -3,6 +3,8 @@ resource "google_compute_instance" "default" {
   name         = element(var.vm_names, count.index)
   machine_type = element(var.machine_type, count.index)
   zone         = var.zone
+
+  tags = ["web"]
   
   boot_disk {
     initialize_params {
@@ -14,6 +16,10 @@ resource "google_compute_instance" "default" {
   }
 
   network_interface {
-    network = "testregister"
+    network = "test-network"
+    subnetwork = "test-subnetwork"
+    access_config {
+      // Ephemeral public IP
+    }
   }
 }
